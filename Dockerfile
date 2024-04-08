@@ -18,8 +18,8 @@
  
 
 FROM quay.io/suhailtechinfo/suhail-v2
-RUN git clone https://github.com/jamesxtreme/JORDAN-JOELSTAR /root/jordan
-WORKDIR /root/Jordan/
+RUN git clone https://github.com/jamesxtreme/JORDAN-JOELSTAR /root/Suhail
+WORKDIR /root/Suhail/
 RUN npm install
 EXPOSE 8000
 CMD ["npm","start" ] 
