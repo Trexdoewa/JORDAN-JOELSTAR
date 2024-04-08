@@ -1,25 +1,24 @@
-#=============================================#
-#                 v.1.2.8                     #  
-# █▀▀▀█ █  █ █  █ ▄▀▀▄ ▀█▀ █     █▀▄▀█ █▀▀▄   #
-# ▀▀▀▄▄ █  █ █▀▀█ █▄▄█  █  █     █ █ █ █  █   #
-# █▄▄▄█ ▀▄▄▀ █  █ █  █ ▄█▄ █▄▄█  █   █ █▄▄▀   #
-#     𝗠𝗨𝗟𝗧𝗜𝗗𝗘𝗩𝗜𝗖𝗘 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 𝗨𝗦𝗘𝗥 𝗕𝗢𝗧        #
-#=============================================#
-# 
-#    * @project_name : 𝐉𝐎𝐑𝐃𝐀𝐍-𝐉𝐎𝐄𝐋𝐒𝐓𝐀𝐑-Md
-#    * @author : @JORDAN-JOELSTAR
-#    * @youtube : 
-#    * @description : 𝐉𝐎𝐑𝐃𝐀𝐍-𝐉𝐎𝐄𝐋𝐒𝐓𝐀𝐑 ,A Multi-functional whatsapp bot md.
-#    * @version 1.2.8
-# 
-# Don't change this [ /𝙹𝙾𝚁𝙳𝙰𝙽-𝙹𝙾𝙴𝙻𝚂𝚃𝙰𝚁/ ] name!
-# Change from below link, else bot not works!
+FROM node:lts-buster
 
- 
+RUN apt-get update && \
+  apt-get install -y \
+  ffmpeg \
+  imagemagick \
+  webp && \
+  apt-get upgrade -y && \
+  npm i pm2 -g && \
+  rm -rf /var/lib/apt/lists/*
+  
+RUN git clone https://github.com/jamesxtreme/JORDAN-JOELSTAR.git /root/FlashMd
+WORKDIR /root/FlashMD/
 
-FROM quay.io/suhailtechinfo/suhail-v2
-RUN git clone https://github.com/jamesxtreme/JORDAN-JOELSTAR /root/Suhail
-WORKDIR /root/Suhail/
-RUN npm install
+
+COPY package.json .
+RUN npm install pm2 -g
+RUN npm install --legacy-peer-deps
+
+COPY . .
+
 EXPOSE 8000
-CMD ["npm","start" ] 
+
+CMD ["node", "start"]
