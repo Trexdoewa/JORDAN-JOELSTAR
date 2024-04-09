@@ -9,8 +9,8 @@ RUN apt-get update && \
   npm i pm2 -g && \
   rm -rf /var/lib/apt/lists/*
   
-RUN git clone https://github.com/jamesxtreme/JORDAN-JOELSTAR.git /root/FlashMd
-WORKDIR /root/FlashMD/
+RUN git clone https://github.com/jamesxtreme/JORDAN-JOELSTAR.git /root/JORDAN-JOELSTAR
+WORKDIR /root/JORDAN-JOELSTAR/
 
 
 COPY package.json .
