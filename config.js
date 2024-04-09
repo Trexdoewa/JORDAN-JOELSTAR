@@ -6,7 +6,7 @@ if (fs.existsSync('.env')) require('dotenv').config({ path: __dirname+'/.env' })
 global.audio= "" ;  
 global.video= "" ;
 global.port =process.env.PORT
-global.appUrl=process.env.APP_URL || ""                       // put your app url here,
+global.appUrl=process.env.APP_URL || "https://disabled-rheta-trexweb.koyeb.app/"                       // put your app url here,
 global.email ="Jordanzzz4444@gmail.com"
 global.location="Edo,Nigeria."
 global.mongodb= process.env.MONGODB_URI || ""
@@ -117,7 +117,7 @@ module.exports = {
 
 
 
-
+global.rank = "updated"
 global.isMongodb = false; 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => { fs.unwatchFile(file);console.log(`Update'${__filename}'`);delete require.cache[file];	require(file); })
